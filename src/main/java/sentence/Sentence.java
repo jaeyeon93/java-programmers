@@ -19,13 +19,10 @@ public class Sentence {
         countWords(s2);
         System.out.println();
         List<String> obj = alphabet(s2);
-        print(obj);
         System.out.println();
         removeOverlap(obj);
         List<Integer> count = counting(obj);
-        printCount(count);
-        map = numberOfAlphabet(obj);
-        System.out.println(map);
+        resultPrint(result, count);
     }
 
 
@@ -71,12 +68,13 @@ public class Sentence {
     }
 
     public static List<Integer> counting(List<String> obj){
-
         for(int i = 0; i < result.size(); i++){
             int number = 0;
+            //System.out.println("result " + i + " is " + result.get(i));
             for(int j = 0; j < obj.size(); j++){
-                if(result.get(i) == obj.get(j)){
+                if(obj.get(j).equals(result.get(i))){
                     number++;
+                    //System.out.println("count is " + number);
                 }
             }
             count.add(number);
@@ -90,11 +88,17 @@ public class Sentence {
         }
     }
 
-    public static HashMap<String, Integer> numberOfAlphabet(List<String> obj){
-        for(int i = 0; i < obj.size(); i++){
-            map.put(obj.get(i), 0);
+    public static void resultPrint(List<String> result, List<Integer> count){
+        for(int i = 0; i < result.size(); i++){
+            System.out.println(result.get(i) +": " + count.get(i));
         }
-        return map;
     }
+
+//    public static HashMap<String, Integer> numberOfAlphabet(List<String> obj){
+//        for(int i = 0; i < obj.size(); i++){
+//            map.put(obj.get(i), 0);
+//        }
+//        return map;
+//    }
 
 }
