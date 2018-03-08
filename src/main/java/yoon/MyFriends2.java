@@ -32,6 +32,4 @@ public class MyFriends2 {
             System.out.println();
         }
     }
-
-
 }

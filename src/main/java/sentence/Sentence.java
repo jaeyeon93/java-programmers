@@ -70,11 +70,9 @@ public class Sentence {
     public static List<Integer> counting(List<String> obj){
         for(int i = 0; i < result.size(); i++){
             int number = 0;
-            //System.out.println("result " + i + " is " + result.get(i));
             for(int j = 0; j < obj.size(); j++){
                 if(obj.get(j).equals(result.get(i))){
                     number++;
-                    //System.out.println("count is " + number);
                 }
             }
             count.add(number);
@@ -93,12 +91,4 @@ public class Sentence {
             System.out.println(result.get(i) +": " + count.get(i));
         }
     }
-
-//    public static HashMap<String, Integer> numberOfAlphabet(List<String> obj){
-//        for(int i = 0; i < obj.size(); i++){
-//            map.put(obj.get(i), 0);
-//        }
-//        return map;
-//    }
-
 }
