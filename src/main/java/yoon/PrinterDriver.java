@@ -1,9 +1,12 @@
 package yoon;
 
 interface Printable {
-    // MS가 정의하고 제공한 인터페잇
-    public void print(String doc);
-
+    static void printLine(String str) {
+        System.out.println(str);
+    }
+    default void print(String doc) {
+        printLine(doc);
+    }
 }
 
 class SPrinterDriver implements Printable {
