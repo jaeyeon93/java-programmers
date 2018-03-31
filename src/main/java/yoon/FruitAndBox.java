@@ -14,7 +14,7 @@ class Orange {
 }
 
 class Box2<T> {
-    private T ob;
+    protected T ob;
 
     public void set(T o) {
         ob = o;
@@ -22,6 +22,11 @@ class Box2<T> {
 
     public T get() {
         return ob;
+    }
+
+    @Override
+    public String toString() {
+        return ob.toString();
     }
 }
 
