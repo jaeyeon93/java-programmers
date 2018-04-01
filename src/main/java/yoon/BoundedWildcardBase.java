@@ -8,12 +8,12 @@ class Toy {
 }
 
 class BoxHandler {
-    public static void outBox(Box2<Toy> box) {
-        Toy t = box.get(); // 상자에 꺼내기
+    public static <T> void outBox(Box2<? extends T> box) {
+        T t = box.get(); // 상자에 꺼내기
         System.out.println(t);
     }
 
-    public static void inBox(Box2<Toy> box, Toy n) {
+    public static <T> void inBox(Box2<? super T> box, T n) {
         box.set(n); // 상자에 넣기
     }
 }
