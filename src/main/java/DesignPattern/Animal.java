@@ -1,6 +1,6 @@
 package DesignPattern;
 
-public abstract class Animal {
+abstract class Animal {
     // 템플릿 메서드
     public void playWithOwner() {
         System.out.println("귀염둥이 이리온...");
