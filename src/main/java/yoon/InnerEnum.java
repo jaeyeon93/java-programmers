@@ -1,13 +1,14 @@
 package yoon;
 
 class Customer {
-    enum Gender {
+    enum Gender { // 클래스 내에 정의된 열거형 Gender
         MALE, FEMALE
     }
 
     private String name;
     private Gender gen;
 
+    // Customer 클래스의 생성자
     Customer(String n, String g) {
         name = n;
 
