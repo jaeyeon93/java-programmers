@@ -2,11 +2,14 @@ package algorithm;
 
 import java.util.*;
 
+//https://www.hackerrank.com/challenges/two-strings/problem
 public class Hackerrank8 {
     static String twoStrings(String s1, String s2){
         List<String> arr1 = Arrays.asList(s1.split(""));
         List<String> arr2 = Arrays.asList(s2.split(""));
-        if (Collections.disjoint(arr1, arr2))
+        Set<String> set1 = new HashSet<>(arr1);
+        Set<String> set2 = new HashSet<>(arr2);
+        if (Collections.disjoint(set1, set2))
             return "NO";
         return "YES";
     }
