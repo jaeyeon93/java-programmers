@@ -13,6 +13,6 @@ public class RecursionSum {
         }
         sum += a;
         System.out.println("sum : " + sum);
-        return sum(a + 1, b);
+        return a + sum(a + 1, b);
     }
 }
