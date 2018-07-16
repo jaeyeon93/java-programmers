@@ -1,3 +1,5 @@
+package inflearnSorting;
+
 public class SelectionSort {
     public void sort(int [] data) {
         int size = data.length;
