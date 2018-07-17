@@ -1,6 +1,6 @@
 public class RecursionPibonacci {
     public static void main(String[] args) {
-        int result = pibonacci(7);
+        int result = pibonacci(48);
         System.out.println(result);
     }
 
