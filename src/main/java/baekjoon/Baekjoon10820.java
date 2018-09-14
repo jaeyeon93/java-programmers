@@ -2,6 +2,7 @@ package baekjoon;
 
 import java.util.Scanner;
 
+// https://www.acmicpc.net/problem/10820
 public class Baekjoon10820 {
     public static void counting(String str) {
         String [] arr = str.split("");
