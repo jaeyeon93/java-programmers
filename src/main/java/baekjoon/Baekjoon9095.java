@@ -2,6 +2,7 @@ package baekjoon;
 
 import java.util.Scanner;
 
+// https://www.acmicpc.net/problem/9095
 public class Baekjoon9095 {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
