@@ -1,9 +1,5 @@
 package codility;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
-
 public class TapeEquilibrium {
     public static Integer solution(int [] arr) {
         int front = 0;
