@@ -11,25 +11,6 @@ public class Baekjoon1664 {
         solution(num);
     }
 
-//    private static int solution(int num) {
-//        List<Integer> primes = new ArrayList<>();
-//        for (int i = 2; i < num; i++)
-//            if (isPrime(i))
-//                primes.add(i);
-//        List<Integer> sums = sums(primes);
-//        int count = 0;
-//        if (sums.contains(num))
-//            ++count;
-//
-//        if (isPrime(num))
-//            ++count;
-//
-//        for (int i = 1; i < sums.size()-1; i++)
-//            for (int j = 1; j < sums.size(); j++)
-//                if (sums.get(j) - sums.get(i) == num)
-//                    ++count;
-//        return count;
-//    }
     private static void solution(int num) {
         List<Integer> primes = new ArrayList<>();
         for (int i = 2; i <= num; i++)
@@ -63,11 +44,4 @@ public class Baekjoon1664 {
         return true;
     }
 
-//    private static List<Integer> sums(List<Integer> primes) {
-//        List<Integer> sums = new ArrayList<>();
-//        sums.add(0);
-//        for (int i = 1; i < primes.size()+1; i++)
-//            sums.add(sums.get(i-1) + primes.get(i-1));
-//        return sums;
-//    }
 }
