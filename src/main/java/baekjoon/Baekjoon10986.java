@@ -1,36 +1,28 @@
 package baekjoon;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
-import java.util.Scanner;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.util.*;
 
 public class Baekjoon10986 {
-    public static void main(String[] args) {
-        Scanner sc = new Scanner(System.in);
-        int size = sc.nextInt();
-        int match = sc.nextInt();
+    public static void main(String[] args) throws IOException {
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        StringTokenizer st = new StringTokenizer(br.readLine());
+        int N = Integer.parseInt(st.nextToken());
+        int M = Integer.parseInt(st.nextToken());
+        st = new StringTokenizer(br.readLine());
         List<Integer> list = new ArrayList<>();
-        for (int i = 0; i < size; i++)
-            list.add(sc.nextInt());
-        int result = solution(list, match);
-        System.out.println(result);
-    }
-
-    public static Integer solution(List<Integer> list, int match) {
-        int sum = 0;
-        int count = 0;
-        int i = 0, j = 0;
-        while (i <= j && j < list.size()) {
-            if (sum < match) {
-                sum += list.get(j++);
-            } else {
-                sum -= list.get(i++);
-            }
-            if (sum % match == 0)
-                count++;
-
+        for (int i = 0; i < N; i++)
+            list.add(Integer.parseInt(st.nextToken()));
+        List<Integer> sums = new ArrayList<>();
+        List<Integer> mods = new ArrayList<>();
+        sums.add(0);
+        for (int i = 1; i < list.size()+1; i++) {
+            int sum = sums.get(i-1) + list.get(i-1);
+            sums.add(sum);
+            int mod = sum % M;
+            mods.add(mod);
         }
-        return count;
     }
 }
