@@ -1,30 +1,38 @@
 package baekjoon;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 // https://www.acmicpc.net/problem/1065
 public class Baekjoon1065 {
-    public static boolean checkNumber(int number) {
-        System.out.println("전달받은 수 : " + number);
-        String [] arr = String.valueOf(number).split("");
-        for (int i = 0; i < arr.length-2; i++)
-            if ((Integer.parseInt(arr[i+1]) - Integer.parseInt(arr[i])) == (Integer.parseInt(arr[i+2]) - Integer.parseInt(arr[i+1])))
-                return true;
-        return false;
-    }
-
-    public static int counting(int bound) {
-        int count = 0;
-        for (int i = 2; i <= bound; i++)
-            if (checkNumber(i)) {
-                System.out.println("count증가");
-                count++;
-            }
-        return count;
-    }
-
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
-        System.out.println(counting(110));
+        int n = sc.nextInt();
+        List<Integer> list = new ArrayList<>();
+        for (int i = 1; i <= n; i++)
+            if (check(i))
+                list.add(i);
+        int result = list.size();
+        System.out.println(result);
+    }
+
+    public static boolean check(int n) {
+        if (n > 0 && n < 100)
+            return true;
+
+        if (n == 1000)
+            return false;
+
+        int [] arr = new int[3];
+        int k = 0;
+        while (n > 0) {
+            arr[k] = n % 10;
+            n /= 10;
+            k++;
+        }
+        if (arr[0] - arr[1] ==arr[1] - arr[2])
+            return true;
+        return false;
     }
 }
