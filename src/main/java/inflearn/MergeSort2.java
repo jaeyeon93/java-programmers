@@ -1,4 +1,4 @@
-package inflearnSorting;
+package inflearn;
 
 public class MergeSort2 {
     void merge(int [] arr, int left, int middle, int right) {

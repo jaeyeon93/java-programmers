@@ -1,4 +1,4 @@
-package inflearnSorting;
+package inflearn;
 
 public class HeapSort {
     public void sort(int [] arr) {

@@ -1,4 +1,4 @@
-package inflearnSorting;
+package inflearn;
 
 import java.util.ArrayList;
 import java.util.Collections;
