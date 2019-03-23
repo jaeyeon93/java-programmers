@@ -3,6 +3,7 @@ import java.util.Arrays;
 import java.util.List;
 
 public class QuickSortBokk {
+    static int count = 0;
     public static List<Integer> quicksort(List<Integer> numbers) {
         if (numbers.size() < 2)
             return numbers;
