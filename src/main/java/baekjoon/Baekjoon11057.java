@@ -9,8 +9,9 @@ public class Baekjoon11057 {
         Scanner sc = new Scanner(System.in);
         int n = sc.nextInt();
         long[][] d = new long[n+1][10];
-        for (int i = 0; i <= 9; i++)
+        for (int i = 0; i <= 9; i++) // 길이가 1인경우
             d[1][i] = 1;
+
         for (int i = 2; i <= n; i++) {
             for (int j = 0; j <= 9; j++) {
                 for (int k = 0; k <= j; k++) {
