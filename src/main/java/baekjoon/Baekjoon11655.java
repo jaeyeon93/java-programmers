@@ -4,23 +4,26 @@ import java.util.Scanner;
 
 
 public class Baekjoon11655 {
-    public static String convert(String msg, int shift) {
-        String s = "";
-        int len = msg.length();
-        for (int i = 0; i < len; i++) {
-            char c = (char)(msg.charAt(i) + shift);
-            if (c > 'z')
-                s += (char)(msg.charAt(i) - (26 - shift));
-            else
-                s += (char)(msg.charAt(i) + shift);
+    public static String convert(String msg) {
+        if (msg.charAt(0) >= 'A' && msg.charAt(0) <= 'Z') {
+            if (msg.charAt(0)+13 <= 'Z')
+                return String.valueOf((char)(msg.charAt(0)+13));
+            return String.valueOf((char)(msg.charAt(0)-13));
+        } else if (msg.charAt(0) >= 'a' && msg.charAt(0) <= 'z') {
+            if (msg.charAt(0)+13 <= 'z')
+                return String.valueOf((char)(msg.charAt(0)+13));
+            return String.valueOf((char)(msg.charAt(0)-13));
         }
-        return s;
+        return msg;
     }
 
 
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
-        String result = convert(sc.nextLine(), 13);
-        System.out.println(result);
+        String input = sc.nextLine();
+        StringBuilder sb = new StringBuilder();
+        for (int i = 0; i < input.length(); i++)
+            sb.append(convert(String.valueOf(input.charAt(i))));
+        System.out.println(sb.toString());
     }
 }
