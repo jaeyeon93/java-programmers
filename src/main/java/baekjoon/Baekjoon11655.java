@@ -4,35 +4,26 @@ import java.util.Scanner;
 
 
 public class Baekjoon11655 {
-//    public static String convert(String msg, int shift) {
-//        String s = "";
-//        int len = msg.length();
-//        for (int i = 0; i < len; i++) {
-//            char c = (char)(msg.charAt(i) + shift);
-//            if (c > 'z')
-//                s += (char)(msg.charAt(i) - (26 - shift));
-//            else
-//                s += (char)(msg.charAt(i) + shift);
-//        }
-//        return s;
-//    }
-
-    public static String convert(String str) {
-        int s = (int)str.charAt(0);
-        if (s >= 65 && s <= 90) {
-            if (s+13 > 90)
-                return String.valueOf(s-13);
-            s += 13;
-            return String.valueOf(s);
+    public static String convert(String msg) {
+        if (msg.charAt(0) >= 'A' && msg.charAt(0) <= 'Z') {
+            if (msg.charAt(0)+13 <= 'Z')
+                return String.valueOf((char)(msg.charAt(0)+13));
+            return String.valueOf((char)(msg.charAt(0)-13));
+        } else if (msg.charAt(0) >= 'a' && msg.charAt(0) <= 'z') {
+            if (msg.charAt(0)+13 <= 'z')
+                return String.valueOf((char)(msg.charAt(0)+13));
+            return String.valueOf((char)(msg.charAt(0)-13));
         }
-        return "";
+        return msg;
     }
+
 
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
-        System.out.println(convert("A"));
-        System.out.println(convert("B"));
-        System.out.println(convert("W"));
-        System.out.println(convert("X"));
+        String input = sc.nextLine();
+        StringBuilder sb = new StringBuilder();
+        for (int i = 0; i < input.length(); i++)
+            sb.append(convert(String.valueOf(input.charAt(i))));
+        System.out.println(sb.toString());
     }
 }
