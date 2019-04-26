@@ -20,6 +20,7 @@ public class Baekjoon1157 {
                 max = arr[i];
             }
         }
+        System.out.println("max : " + max);
 
         StringBuilder sb = new StringBuilder();
         int check = -1;
