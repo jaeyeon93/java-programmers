@@ -1,7 +1,6 @@
 package baekjoon;
 
 import java.util.*;
-import java.util.stream.Collectors;
 
 // https://www.acmicpc.net/problem/1157
 public class Baekjoon1157 {
@@ -20,18 +19,19 @@ public class Baekjoon1157 {
                 max = arr[i];
             }
         }
-        System.out.println("max : " + max);
-
         StringBuilder sb = new StringBuilder();
         int check = -1;
+
         for (int i = 0; i < 26; i++) {
-            if (arr[i] == max)
+            if (arr[i] == max) {
                 if (check != -1) {
                     sb.append("?");
                     System.out.println(sb.toString());
                     return;
                 }
-            check = i;
+                check = i;
+            }
+
         }
         sb.append((char)(check+65));
         System.out.println(sb.toString());
