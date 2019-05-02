@@ -3,29 +3,23 @@ package baekjoon;
 import java.util.*;
 
 public class Baekjoon1316 {
-    public static Boolean check(String str) {
-        List<String> list = Arrays.asList(str.split(""));
-        Set<String> set = new HashSet<>(list);
-        Map<String, Integer> map = new HashMap<>();
-        Iterator<String> itr = set.iterator();
-        while (itr.hasNext())
-            map.put(itr.next(), 0);
-        for (String s : list) {
-            int count = map.get(s);
-            map.put(s, ++count);
+    public static Integer check(String str) {
+        for (int i = 0; i < str.length()-1; i++) {
+            if (str.charAt(i) != str.charAt(i+1)) {
+                for (int j = i+2; j < str.length(); j++)
+                    if (str.charAt(i) == str.charAt(j))
+                        return 0;
+            }
         }
-        System.out.println(map);
-
-        itr = map.keySet().iterator();
-        while (itr.hasNext()) {
-            String currnet = itr.next();
-
-        }
-        return false;
+        return 1;
     }
 
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
-        System.out.println(check("aaabbb"));
+        int t = sc.nextInt();
+        int count = 0;
+        for (int i = 0; i < t; i++)
+            count += check(sc.next());
+        System.out.println(count);
     }
 }
