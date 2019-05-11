@@ -13,7 +13,7 @@ public class Baekjoon5597 {
         for (int i = 0; i < 28; i++)
             result[sc.nextInt()] = true;
 
-        for (int i = 0; i < 30; i++)
+        for (int i = 1; i < 31; i++)
             if (result[i] == false)
                 System.out.println(i);
     }
