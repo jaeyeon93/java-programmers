@@ -9,17 +9,13 @@ public class Baekjoon2869 {
         int a = Integer.parseInt(arr[0]);
         int b = Integer.parseInt(arr[1]);
         int h = Integer.parseInt(arr[2]);
-        int current = 0;
         int day = 0;
-        while (current <= h) {
-            current += a;
-            if (current >= h) {
-                day++;
-                break;
-            }
-            current -= b;
-            day++;
-        }
+        h -=a ;
+        if (h % (a-b) == 0)
+            day += (h/(a-b));
+        else
+            day += (h/(a-b))+1;
+        day++;
         BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
         bw.write(String.valueOf(day));
         bw.flush();
