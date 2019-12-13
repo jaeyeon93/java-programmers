@@ -5,7 +5,7 @@ import java.util.*;
 public class Baekjoon9506 {
     public static Set<Integer> solution(int n) {
         Set<Integer> set = new HashSet<>();
-        for (int i = 2; i <= n/2; i++) {
+        for (int i = 1; i*i <= n; i++) {
             if (n % i == 0) {
                 set.add(i);
                 set.add(n / i);
@@ -16,10 +16,11 @@ public class Baekjoon9506 {
 
     public static String check(Set<Integer> set, int n) {
         StringBuilder sb = new StringBuilder();
-        int sum = 1;
+        int sum = 0;
         Integer [] arr = set.toArray(new Integer[set.size()]);
-        for (Integer i : arr)
-            sum += i;
+        Arrays.sort(arr);
+        for (int i = 0; i < arr.length-1; i++)
+            sum += arr[i];
         if (sum != n) {
             sb.append(n);
             sb.append(" is NOT perfect.");
@@ -27,10 +28,9 @@ public class Baekjoon9506 {
         }
         sb.append(n);
         sb.append(" = ");
-        sb.append(1 + " + ");
-        for (int i = 0; i < arr.length-1; i++)
+        for (int i = 0; i < arr.length-2; i++)
             sb.append(arr[i] + " + ");
-        sb.append(arr[arr.length-1]);
+        sb.append(arr[arr.length-2]);
         return sb.toString();
     }
 
