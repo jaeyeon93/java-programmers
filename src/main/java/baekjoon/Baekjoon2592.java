@@ -2,7 +2,22 @@ package baekjoon;
 
 import java.util.*;
 
+// https://www.acmicpc.net/problem/2592
 public class Baekjoon2592 {
+    public static Integer solution(Map<Integer, Integer> map) {
+        Integer max_value = Collections.max(map.values());
+        Integer max = 0;
+        Iterator<Integer> itr = map.keySet().iterator();
+        while (itr.hasNext()) {
+            int key = itr.next();
+            int value = map.get(key);
+            if (max_value == value) {
+                max = key;
+                break;
+            }
+        }
+        return max;
+    }
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         List<Integer> list = new ArrayList<>();
@@ -20,24 +35,14 @@ public class Baekjoon2592 {
         Iterator<Integer> itr = set.iterator();
         while (itr.hasNext())
             map.put(itr.next(), 0);
-
+        itr.remove();
         for (Integer i : list) {
             int count = map.get(i);
             map.put(i, ++count);
         }
 
-        Integer max_value = Collections.max(map.values());
-        Integer max = 0;
-        itr = map.keySet().iterator();
-        while (itr.hasNext()) {
-            if (map.get(itr.next()) == max_value) {
-                max = map.get(itr.next());
-                break;
-            }
-        }
+
         System.out.println(average);
-        System.out.println(max);
+        System.out.println(solution(map));
     }
 }
-
-// 1 2 2 2 2 3 3 3 4 4
