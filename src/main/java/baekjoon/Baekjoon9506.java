@@ -18,6 +18,7 @@ public class Baekjoon9506 {
         StringBuilder sb = new StringBuilder();
         int sum = 0;
         Integer [] arr = set.toArray(new Integer[set.size()]);
+        System.out.println(Arrays.asList(arr));
         Arrays.sort(arr);
         for (int i = 0; i < arr.length-1; i++)
             sum += arr[i];
