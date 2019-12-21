@@ -1,20 +1,18 @@
 package baekjoon;
 
-import java.util.LinkedList;
-import java.util.Queue;
-import java.util.Scanner;
+import java.util.*;
 
 public class Baekjoon2667 {
     private static final int [][] DIRECTIONS = {{1,0}, {-1,0}, {0,1}, {0,-1}};
     private static final int ROW = 0, COL = 1;
-
+    private static int houseNum = 0;
     private static class Point {
-        int col;
         int row;
+        int col;
 
-        public Point(int col, int row) {
-            this.col = col;
+        public Point(int row, int col) {
             this.row = row;
+            this.col = col;
         }
     }
 
@@ -27,36 +25,40 @@ public class Baekjoon2667 {
             for (int col = 0; col < n; col++)
                 arr[row][col] = Integer.parseInt(temp[col]);
         }
-        System.out.println(bsf(arr, n));
+        List<Integer> result = bsf(arr, n);
+        System.out.println(houseNum);
+        Collections.sort(result);
+        for (Integer i : result)
+            System.out.println(i);
     }
 
-    public static Integer bsf(int [][] arr, int n) {
+    public static List<Integer> bsf(int [][] arr, int n) {
         boolean [][] visit = new boolean[n][n];
-        StringBuilder sb = new StringBuilder();
-        for (int row = 0; row < n; row++) {
-            for (int col = 0; col < n; col++) {
+        List<Integer> result = new ArrayList<>();
+        for (int row = 0; row < n; row++) { // row : y축
+            for (int col = 0; col < n; col++) { // col : x축
                 if (visit[row][col] || arr[row][col] == 0) continue; // 만약에 방문을 했고, arr[row][col] = 0이면 pass
                 visit[row][col] = true;
                 Queue<Point> q = new LinkedList<>();
-                q.offer(new Point(col, row));
-                int count = 0;
+                q.offer(new Point(row, col));
+                houseNum++;
+                int count = 1;
                 while (!q.isEmpty()) {
                     Point current = q.poll();
-
                     for (final int [] DIRECTION : DIRECTIONS) { // 4방향탐색
                         int nextRow = current.row + DIRECTION[ROW];
                         int nextCol = current.col + DIRECTION[COL];
-
-                        if (nextRow < 0 || nextRow >= n || nextCol < 0 || nextCol >= n) continue;
-                        if (visit[nextCol][nextRow]) continue;
-                        count++;
-                        visit[nextCol][nextRow] = true;
-                        q.offer(new Point(col, row));
+                        if (nextRow < 0 || nextRow >= n || nextCol < 0 || nextCol >= n) continue; // 4방향 탐색할때,
+                        if (visit[nextRow][nextCol]) continue; // 방문을 안했으면 pass
+                        if (arr[nextRow][nextCol] == 0) continue;
+                        ++count;
+                        visit[nextRow][nextCol] = true;
+                        q.offer(new Point(nextRow, nextCol));
                     }
                 }
-                System.out.println(count);
+                result.add(count);
             }
         }
-        return 0;
+        return result;
     }
 }
