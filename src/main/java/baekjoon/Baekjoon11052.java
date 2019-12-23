@@ -5,23 +5,19 @@ import java.util.*;
 public class Baekjoon11052 {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
-        int n = sc.nextInt();
-        List<Double> list = new ArrayList<>();
-        for (int i = 0; i < n; i++)
-            list.add((double)sc.nextInt()/(i+1));
-        int money = 0;
+        int n = Integer.parseInt(sc.nextLine());
+        int [] arr = new int[n+1];
+        for (int i = 1; i <= n; i++)
+            arr[i] = sc.nextInt();
+        System.out.println(solution(arr, n));
+    }
 
-        while (true) {
-            int maxIdx = list.indexOf(Collections.max(list));
-            int count = n / (maxIdx+1);
-            money += list.get(maxIdx)*(maxIdx+1)*count;
-            n %= (maxIdx+1);
-            if (n == 0) {
-                System.out.println(money);
-                return;
-            }
-            double maxValue = list.get(maxIdx);
-            maxValue = 0;
+    public static int solution(int [] arr, int n) {
+        int [] dp = new int[n+1];
+        for (int i = 1; i <= n; i++) {
+            for (int j = 1; j <= i; j++)
+                dp[i] = Math.max(arr[j] + dp[i-j], dp[i]);
         }
+        return dp[n];
     }
 }
