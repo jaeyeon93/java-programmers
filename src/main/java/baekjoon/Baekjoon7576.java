@@ -30,33 +30,44 @@ public class Baekjoon7576 {
             for (int j = 0; j < col; j++)
                 map[i][j] = Integer.parseInt(line[j]);
         }
-        System.out.println(bsf(map, row, col));
+        int [][] result = bsf(map, row, col);
+        int max = 0;
+        for (int i = 0; i < row; i++)
+            for (int j = 0; j < col; j++) {
+                if (result[i][j] == 0) {
+                    System.out.println(-1);
+                    return;
+                }
+                max = Math.max(max, result[i][j]);
+            }
+        System.out.println(max-1);
     }
 
-    private static int bsf(int [][] map, int rowSize, int colSize) {
+    private static int [][] bsf(int [][] map, int rowSize, int colSize) {
         boolean [][] visit = new boolean[rowSize][colSize];
-
+        Queue<Point> q = new LinkedList<>();
         for (int row = 0; row < rowSize; row++)
             for (int col = 0; col < colSize; col++) {
                 if (visit[row][col]) continue;
                 if (map[row][col] == 0) continue;
-                Queue<Point> q = new LinkedList<>();
-                q.offer(new Point(row, col));
-                while (!q.isEmpty()) {
-                    Point current = q.poll();
-                    for (final int [] DIRECTION : DIRECTIONS) {
-                        int nextRow = current.row + DIRECTION[0];
-                        int nextCol = current.col + DIRECTION[1];
-                        if (nextRow < 0 || nextCol < 0 || nextRow >= rowSize || nextCol >= colSize) continue;
-                        if (visit[nextRow][nextCol]) continue;
-                        if (map[nextRow][nextCol] == -1) continue;
+                visit[row][col] = true;
+                if (map[row][col] == 1)
+                    q.offer(new Point(row, col));
 
-                        visit[nextRow][nextCol] = true;
-
-                        map[nextRow][nextCol] = map[current.row][current.col] + 1;
-                    }
-                }
             }
-
+        while (!q.isEmpty()) {
+            Point current = q.poll();
+            for (final int [] DIRECTION : DIRECTIONS) {
+                int nextRow = current.row + DIRECTION[0];
+                int nextCol = current.col + DIRECTION[1];
+                if (nextRow < 0 || nextCol < 0 || nextRow >= rowSize || nextCol >= colSize) continue;
+                if (visit[nextRow][nextCol]) continue;
+                if (map[nextRow][nextCol] == -1) continue;
+                map[nextRow][nextCol] = map[current.row][current.col] + 1;
+                visit[nextRow][nextCol] = true;
+                q.offer(new Point(nextRow, nextCol));
+            }
+        }
+        return map;
     }
 }
