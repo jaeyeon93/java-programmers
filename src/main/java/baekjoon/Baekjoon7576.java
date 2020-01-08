@@ -4,19 +4,19 @@ import java.util.LinkedList;
 import java.util.Queue;
 import java.util.Scanner;
 
-public class Baekjoon7576 {
-    private static final int [][] DIRECTIONS = {{1,0},{0,1},{-1,0},{0,-1}};
-    private static final int ROW = 0, COL = 1;
+    public class Baekjoon7576 {
+        private static final int [][] DIRECTIONS = {{1,0},{0,1},{-1,0},{0,-1}};
+        private static final int ROW = 0, COL = 1;
 
-    private static class Point {
-        int row;
-        int col;
+        private static class Point {
+            int row;
+            int col;
 
-        Point(int row, int col) {
-            this.row = row;
-            this.col = col;
+            Point(int row, int col) {
+                this.row = row;
+                this.col = col;
+            }
         }
-    }
 
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
