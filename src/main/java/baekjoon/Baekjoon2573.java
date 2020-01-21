@@ -29,7 +29,6 @@ public class Baekjoon2573 {
             for (int col = 0; col < colSize; col++)
                 map[row][col] = Integer.parseInt(line[col]);
         }
-        int year = 0;
         System.out.println(bsf(map, rowSize, colSize));
     }
     private static int bsf(int [][] map, int rowSize, int colSize) {
@@ -43,22 +42,25 @@ public class Baekjoon2573 {
                 visit[row][col] = true;
                 count++;
                 q.offer(new Point(row, col));
-                while (!q.isEmpty()) {
-                    Point current = q.poll();
-                    for (final int [] DIRECTION : DIRECTIONS) {
-                        int nextRow = current.row + DIRECTION[ROW];
-                        int nextCol = current.col + DIRECTION[COL];
-                        if (nextRow < 0 || nextCol < 0 || nextRow >= rowSize || nextCol >= colSize) continue;
-                        if (visit[nextRow][nextCol]) continue;
-                        System.out.println("current : " + current.row + "," + current.col + " next : " + nextRow + "," + nextCol + " value : " + map[current.row][current.col] + " next value : " + map[nextRow][nextCol]);
-                        if (map[nextRow][nextCol] == 0 && map[current.row][current.col] > 0) {
-                            map[current.row][current.col] = map[current.row][current.col] - 1;
-                        }
-                        visit[nextRow][nextCol] = true;
-                        q.offer(new Point(nextRow, nextCol));
-                    }
-                }
             }
+        while (!q.isEmpty()) {
+            Point current = q.poll();
+            for (final int [] DIRECTION : DIRECTIONS) {
+                int nextRow = current.row + DIRECTION[ROW];
+                int nextCol = current.col + DIRECTION[COL];
+                if (nextRow < 0 || nextCol < 0 || nextRow >= rowSize || nextCol >= colSize) continue;
+                if (map[nextRow][nextCol] == 0 && map[current.row][current.col] > 0) {
+                    map[current.row][current.col] = map[current.row][current.col] - 1;
+                }
+                if (visit[nextRow][nextCol]) continue;
+                System.out.println("current : " + current.row + "," + current.col + " next : " + nextRow + "," + nextCol + " value : " + map[current.row][current.col] + " next value : " + map[nextRow][nextCol]);
+//                        if (map[nextRow][nextCol] == 0 && map[current.row][current.col] > 0) {
+//                            map[current.row][current.col] = map[current.row][current.col] - 1;
+//                        }
+                visit[nextRow][nextCol] = true;
+                q.offer(new Point(nextRow, nextCol));
+            }
+        }
 
         for (int i = 0; i < rowSize; i++) {
             for (int j = 0; j < colSize; j++)
