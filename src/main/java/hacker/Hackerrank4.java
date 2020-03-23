@@ -1,4 +1,4 @@
-package algorithm;
+package hacker;
 
 import java.io.*;
 import java.util.*;

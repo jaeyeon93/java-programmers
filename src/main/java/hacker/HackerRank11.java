@@ -1,4 +1,4 @@
-package algorithm;
+package hacker;
 
 public class HackerRank11 {
     public Integer result(int n) {

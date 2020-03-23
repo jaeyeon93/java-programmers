@@ -1,4 +1,4 @@
-package algorithm;
+package programmers;
 
 import java.util.Arrays;
 //https://programmers.co.kr/learn/challenge_codes/89

@@ -1,4 +1,4 @@
-package algorithm;
+package programmers;
 
 public class Programmers6 {
     public static void main(String[] args) {
