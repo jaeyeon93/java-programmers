@@ -1,9 +1,6 @@
 package baekjoon;
 
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Scanner;
+import java.util.*;
 
 public class Baekjoon2822 {
     public static void main(String[] args) {
@@ -20,8 +17,11 @@ public class Baekjoon2822 {
             sum += arr[i];
 
         System.out.println(sum);
-
+        List<Integer> result = new ArrayList<>();
         for (int i = 3; i < arr.length; i++)
-            System.out.print(map.get(arr[i]) + " ");
+            result.add(map.get(arr[i]));
+        Collections.sort(result);
+        for (Integer i : result)
+            System.out.print(i + " ");
     }
 }

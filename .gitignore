@@ -8,3 +8,6 @@
 /.idea/
 *.class
 *.xml
+
+src/main/java/book/
+src/main/java/test/
