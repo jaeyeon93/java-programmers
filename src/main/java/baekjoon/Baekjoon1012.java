@@ -3,6 +3,8 @@ package baekjoon;
 import java.util.LinkedList;
 import java.util.Queue;
 import java.util.Scanner;
+import java.util.concurrent.atomic.AtomicInteger;
+import java.util.concurrent.locks.ReentrantLock;
 
 public class Baekjoon1012 {
     private static final int [][] DIRECTIONS = {{1,0}, {-1,0},{0,1},{0,-1}};
