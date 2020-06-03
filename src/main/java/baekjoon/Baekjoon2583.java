@@ -3,78 +3,81 @@ package baekjoon;
 import java.util.*;
 
 public class Baekjoon2583 {
-    private static final int [][] DIRECTIONS = {{0,1},{0,-1},{1,0},{-1,0}};
+    private static int m,n,k;
+    private static int [][] map;
+    private static boolean [][] visit;
+    private static final int [][] DIRECTIONS = {{1,0}, {0,1}, {-1,0}, {0,-1}};
     private static final int ROW = 0, COL = 1;
-
-    private static class Point {
-        int row;
-        int col;
-
-        Point(int row, int col) {
-            this.row = row;
-            this.col = col;
-        }
-    }
+    private static List<Integer> area = new ArrayList<>();
 
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
-        String [] input = sc.nextLine().split(" ");
-        int m = Integer.parseInt(input[0]);
-        int n = Integer.parseInt(input[1]);
-        int k = Integer.parseInt(input[2]);
-        int [][] map = new int[m][n];
-        List<Integer> result = new ArrayList<>();
-        for (int row = 0; row < m; row++)
-            for (int col = 0; col < n; col++)
-                map[row][col] = 0;
+        String [] first = sc.nextLine().split(" ");
+        m = Integer.parseInt(first[0]);
+        n = Integer.parseInt(first[1]);
+        k = Integer.parseInt(first[2]);
+        map = new int[m][n];
+        visit = new boolean[m][n];
+        for (int i = 0; i < k; i++)
+            paint(sc.nextLine());
 
-        for (int t = 0; t < k; t++) {
-            String [] line = sc.nextLine().split(" ");
-            int xStart = Integer.parseInt(line[0]);
-            int yStart = Integer.parseInt(line[1]);
-            int xEnd = Integer.parseInt(line[2]);
-            int yEnd = Integer.parseInt(line[3]);
-            for (int y = yStart; y < yEnd; y++)
-                for (int x = xStart; x < xEnd; x++)
-                    map[y][x] = 1;
-        }
+        // 탐색
+        bsf();
 
-        System.out.println(bsf(map, m, n, result));
+        // 출력
+        Collections.sort(area);
+        System.out.println(area.size());
+        for (int i : area)
+            System.out.print(i + " ");
     }
 
-    private static List<Integer> bsf(int [][] map, int m, int n, List<Integer> result) {
-        System.out.println("====");
-        for (int row = 0; row < m; row++) {
-            for (int col = 0; col < n; col++)
-                System.out.print(map[row][col] + " ");
-            System.out.println();
-        }
-        System.out.println("====");
+    public static void paint(String input) {
+        String [] line = input.split(" ");
+        int sx = Integer.parseInt(line[0]);
+        int sy = Integer.parseInt(line[1]);
+        int ex = Integer.parseInt(line[2]);
+        int ey = Integer.parseInt(line[3]);
 
-        boolean [][] visit = new boolean[m][n];
-        Queue<Point> q = new LinkedList<>();
-        for (int row = 0; row < m; row++)
-            for (int col = 0; col < n; col++) {
-                int count = 0;
-                if (visit[row][col] || map[row][col] == 0) continue;
-                visit[row][col] = true;
-                System.out.println(row + "," + col + " value : " + map[row][col]);
-                q.offer(new Point(row, col));
-                while (!q.isEmpty()) {
-                    Point current = q.poll();
-//                    int count = 0;
-                    for (final int [] DIRECTION : DIRECTIONS) {
-                        int nextRow = current.row + DIRECTION[ROW];
-                        int nextCol = current.col + DIRECTION[COL];
-                        if (nextRow < 0 || nextCol < 0 || nextRow >= m || nextCol >= n) continue;
-                        if (visit[nextRow][nextCol] || map[nextRow][nextCol] == 0) continue;
-                        visit[nextRow][nextCol] = true;
-                        ++count;
-                        q.offer(new Point(nextRow, nextCol));
+        for (int y = sy; y < ey; y++)
+            for (int x = sx; x < ex; x++)
+                map[y][x] = 1;
+    }
+
+    private static class Point {
+        int y;
+        int x;
+
+        public Point(int y, int x) {
+            this.y = y;
+            this.x = x;
+        }
+    }
+
+    public static void bsf() {
+        for (int y = 0; y < m; y++) {
+            for (int x = 0; x < n; x++) {
+                if (map[y][x] == 0 && visit[y][x] == false) {
+                    Queue<Point> q = new LinkedList<>();
+                    q.offer(new Point(y,x));
+                    int count = 1;
+                    while (!q.isEmpty()) {
+                        Point current = q.poll();
+                        visit[current.y][current.x] = true;
+
+                        for (int [] DIRECTION : DIRECTIONS) {
+                            int ny = current.y + DIRECTION[ROW];
+                            int nx = current.x + DIRECTION[COL];
+                            if (ny < 0 || ny >= m || nx < 0 || nx >= n) continue;
+                            if (!visit[ny][nx] && map[ny][nx] == 0) {
+                                visit[ny][nx] = true;
+                                count++;
+                                q.offer(new Point(ny, nx));
+                            }
+                        }
                     }
-                    System.out.println("count : " + count);
+                    area.add(count);
+                }
             }
         }
-        return result;
     }
 }

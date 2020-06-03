@@ -31,21 +31,4 @@ public class Baekjoon10974 {
             }
         }
     }
-
-    private static void dfs2(int cnt, List<Integer>) {
-        if (cnt == n) {
-            System.out.println(s);
-            return;
-        }
-
-        for (int i = 1; i <= n; i++) {
-            if (!visit[i]) {
-                visit[i] = true;
-                dfs(cnt+1, s + i + " ");
-                visit[i] = false;
-
-            }
-        }
-    }
-
 }
