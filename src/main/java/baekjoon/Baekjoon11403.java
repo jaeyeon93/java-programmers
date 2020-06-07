@@ -44,6 +44,7 @@ public class Baekjoon11403 {
         int [] rows = map[col];
         for (int i = 0; i < rows.length; i++) {
             if (rows[i] == 1 && !visited[i]) {
+                System.out.println("row : " + row + " i : " + i);
                 result[row][i] = 1;
                 visited[i] = true;
                 dfs(row, i);
