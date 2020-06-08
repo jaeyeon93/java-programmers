@@ -10,10 +10,10 @@ public class Baekjoon11724 {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         int n = sc.nextInt();
-        int m = sc.nextByte();
+        int m = sc.nextInt();
         arr = new ArrayList[n+1];
 
-        for (int i = 0; i <= n; i++)
+        for (int i = 1; i <= n; i++)
             arr[i] = new ArrayList<>();
 
         visit = new boolean[n+1];
