@@ -46,7 +46,7 @@ public class Baekjoon7569 {
                     } else if (map[i][j][k] > day) day = map[i][j][k];
             }
         }
-        
+
         System.out.println(day-1);
     }
 
