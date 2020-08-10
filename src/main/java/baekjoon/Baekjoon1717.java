@@ -20,7 +20,7 @@ public class Baekjoon1717 {
         for (int i = 1; i <= n; i++)
             parent[i] = i;
 
-        for (int i = 0; i < m; i++) {
+        for (int i =  0; i < m; i++) {
             st = new StringTokenizer(br.readLine());
             int oper = Integer.parseInt(st.nextToken());
             int a = Integer.parseInt(st.nextToken());
@@ -41,10 +41,13 @@ public class Baekjoon1717 {
         int y = find(b);
         // 같은 부모를 가지지 않을때.
         if (x == y) return;
-
-        parent[x] = y;
+        if (x < y)
+            parent[y] = x;
+        else
+            parent[x] = y;
     }
 
+    // 같은 그래프에 속해있는지 확인
     public static boolean sameParent(int a, int b) {
         int x = find(a);
         int y = find(b);
