@@ -28,7 +28,7 @@ public class Baekjoon6118 {
             map[e].add(v);
         }
 
-         bfs(1);
+        bfs(1);
         int maxDistance = Integer.MIN_VALUE;
         int minIndex = Integer.MAX_VALUE;
         int count = 0;
