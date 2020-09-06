@@ -1,20 +1,23 @@
 package baekjoon;
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
-import java.util.Scanner;
 
 public class Baekjoon1300 {
-    public static void main(String[] args) {
-        Scanner sc = new Scanner(System.in);
-        int n = sc.nextInt();
-        int m =sc.nextInt();
-        if (n == 1)
-            System.out.println(1);
-        int [] arr = new int[n*n+1];
-        for (int i = 0; i < 2*n-1; i++) {
-            // n = 3; 0 < i < 5; => 0,1,2,3,4
-        }
+    private static List<Integer> list = new ArrayList<>();
+    public static void main(String[] args) throws IOException {
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        int n = Integer.parseInt(br.readLine());
+        int k = Integer.parseInt(br.readLine());
+        for (int i = 1; i <= n; i++)
+            for (int j = 1; j <= n; j++)
+                list.add(i*j);
+        Collections.sort(list);
+        System.out.println(list.get(k-1));
     }
 }
 
