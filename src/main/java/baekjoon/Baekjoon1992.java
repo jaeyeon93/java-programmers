@@ -30,10 +30,10 @@ public class Baekjoon1992 {
         } else {
             sb.append("(");
             int half = size / 2;
-            QuadTree(row, col, half);
-            QuadTree(row,col+half, half);
-            QuadTree(row+half, col, half);
-            QuadTree(row+half,col+half, half);
+            QuadTree(row, col, half); // 1사분면
+            QuadTree(row,col+half, half); // 2사분면
+            QuadTree(row+half, col, half); // 3사분면
+            QuadTree(row+half,col+half, half); // 4사분면
             sb.append(")");
         }
     }
